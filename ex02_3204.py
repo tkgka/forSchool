@@ -4,6 +4,20 @@
 # In[4]:
 
 
+import pandas as pd
+tv_seoul = pd.read_csv("../data/01. CCTV_in_Seoul.csv", encoding="utf-8")
+tv_seoul.head()
+
+tv_seoul.sort_values(by='소계', ascending=True).head()
+# In[13]:
+
+
+tv_seoul.rename(columns={tv_seoul.columns[0]:"구별"}, inplace = True)
+tv_seoul.head()
+
+
+# In[14]:
+
 
 tv_seoul["최근증가율"]=(tv_seoul['2016년']+tv_seoul['2015년']+tv_seoul['2014년'])/tv_seoul['2013년도 이전']*100
 tv_seoul.sort_values(by="최근증가율", ascending=False).head()
