@@ -6,4 +6,10 @@ exports.template = function(page, query,query2){
     <br>사용자가 보낸 QueryString2:${query2}
     </body></html>`;
 }
-
+exports.table = function(length){
+    var print = "";
+        for(var i=1;i<=length;i++){
+            print += "<th>"+i+"</th>";
+        }
+        return "<table border=1><tr>"+print+"</tr></table>" ;        
+}

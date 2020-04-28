@@ -33,13 +33,8 @@ http.createServer(function(req,res) {
         
     }else if(path == "/table"){
         
-        var print = "";
-        for(var i=1;i<=query.id;i++){
-            print += "<th>"+i+"</th>";
-        }
-        res.end("<table border=1><tr>"+print+"</tr></table>");
-        
-    
+        res.end(temp.table(query.id));
+
     }else {
             res.end("PageNotFound");
     }
