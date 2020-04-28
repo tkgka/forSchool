@@ -30,8 +30,10 @@ http.createServer((req,res)=>{
             //req 변수 안에 값이 있음
         req.on('end',function(){
            var post = qs.parse(body);
-           console.log(post);
+           res.end(post.text);
+           //console.log(post);
 
+           
         });
 
     }
