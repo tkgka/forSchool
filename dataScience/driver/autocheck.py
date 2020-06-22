@@ -4,7 +4,7 @@ import time
 name = '김수환'
 birth_day = '020707'
 
-driver = wb.Chrome()
+driver = wb.Chrome("./chromedriver")
 url = 'https://eduro.gen.go.kr/stv_cvd_co00_002.do'
 driver.get(url)
 
