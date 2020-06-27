@@ -33,7 +33,7 @@ app.post('/Join',function(req, res){
 app.get('/delete',function(request, response){
         func.delete(request,response);  
     });
-app.post('/update',function(request, response){ 
+app.post('/update',function(request, response){
     func.update(request,response);
 });
 
