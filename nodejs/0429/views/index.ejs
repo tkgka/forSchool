@@ -3,25 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
-    <h1>index 페이지 접속성공</h1>
-    서버에서 보낸 num 값 : <%=num%>
-    
-    <%if(num%2==0){%>
-        <h1>짝수 입니다</h1>
-    <%}else{%>
-        <h1>홀수 입니다</h1>
+    <h1>index 페이지 접근 성공</h1>
+    서버에서 넘어온 NUM 값 : <%=num%>
+    <table border="1">
+        <%for(var i = 0; i < num; i++){%>
+            <td><%=i+1%></td>
         <%}%>
-
-        <table border="1">
-        <tr>
-        <%for(var i=1;i<=num;i++) {%>
-            <td><%=i%></td>
-            <%}%>
-        </tr>
     </table>
-
 </body>
 </html>
