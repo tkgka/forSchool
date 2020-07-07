@@ -179,8 +179,13 @@
 									<div class="contact-method">
 										<span class="icon alt fa-envelope"></span>
 										<h3>Email</h3>
-										<a href="#"><%=user.email%></a>
-										<!-- 로그인 한 사용자의 이메일을 출력하시오 -->
+										
+										<! -- 로그인 한 사용자의 이메일을 출력하시오 -->
+										<%if(user == null){%>
+											<a href="#">로그인 한사람의 이메일</a>
+											<%}else{%>
+												<a href="#"><%=user.email%></a>
+												<%}%>
 									</div>
 								</section>
 								<section>
