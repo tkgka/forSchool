@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script type="text/javascript">
+function send() {
+	 var id = document.getElementById("su").value;
+	 //alert(id);
+	 var sum=0;
+	 for (var i=1;i<=id;i++){
+		 sum += i;
+	 }
+	 document.getElementById("msg").innerHTML = "<font color='red'>"+sum+"</font>";
+}
+$(document).ready(function (){
+	$("#btn").click(function () {
+		var su = $("#su").val();
+		//alert(su);
+		$("#msg").html(su);
+		});
+	
+	});
+	
+
+</script>
+</head>
+<body>
+<input type="text" name="su" id ="su"/>
+<input type="button" id="btn" value="클릭" />
+<hr>
+<div id = "msg">메세지</div>
+</body>
+</html>
