@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        window.onload = function() {
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    google: "https://www.google.com",
+                    naver: "https://www.naver.com",
+                    isgood: true
+                    }
+                    
+                
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id = "app">
+        <p -if = "isgood">good</p>
+        <a v-bind:href="google">google</a>
+    </div>
+</body>
+</html>

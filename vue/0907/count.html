@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        window.onload = function() {
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: '<strong><em>test</em></strong>',
+                    num : 0,
+                    sports : ["soccer","baseball","basketball"],
+                    fruits: {
+                        name:"apple",
+                        price:1000
+                    },
+                    fruit: [
+                        {name:"apple", price : 1000},
+                        {name:"pare", price : 2000},
+                        {name:"melon", price : 3000},
+                        {name:"mango", price : 4000}
+                    ]
+                },
+                methods: {
+                    plus: function(){
+                        this.num +=1
+                    },
+                    min: function(){
+                        this.num -=1
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        {{$data}}
+        <br>
+        {{fruits.name}}™ is {{fruits.price}}
+
+        <ul>
+            <li v-for = "item in fruit">{{item.name}} is {{item.price}} won </li>
+        </ul>
+
+        <ul>
+            <li v-for = "item in sports">{{item}}</li>
+        </ul>
+        <p v-html = "msg"></p>
+        {{num + 100}} <button v-on:click = 'plus'>plus</button><button v-on:click = 'min'>min</button>
+       </div>
+   
+</body>
+</html>
