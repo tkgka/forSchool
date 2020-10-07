@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        window.onload = function(){
+            let originData = [
+                ['Year','java','C','C++','Python','javascript'],
+                ['1998',16,1,2,23,20],
+                ['2003',1,2,3,11,7],
+                ['2008',1,2,3,6,8]
+            ]
+        
+            //구글차트 패키지 로딩
+            google.charts.load("current", {packages: ['corechart']});
+            //차트 로딩 후 실행될 콜백 함수 처리
+            google.charts.setOnLoadCallback(draw);
+
+            function draw(){
+                console.log("callback function!")
+                let data = google.visualization.arrayToDataTable(originData)
+                let options = {width:800,height:500 ,seriesType:'bars'}
+                let chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+                chart.draw(data, options)
+            }
+        };
+    </script>
+  </head>
+  <body>
+    <div id="chart_div"></div>
+  </body>
+</html>
