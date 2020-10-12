@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        window.onload = function() {
+            let vm = new Vue({
+                el: '#app',
+                data: {
+                    list:[['종류', '개수']]
+                },
+                created: function() {
+                    axios.get('http://localhost:8080/list').then((res)=>{
+                        // console.log(Object.keys(res.data[0]).toString());
+                        // console.log(parseInt(Object.values(res.data[0])));
+
+                        let arr = [];
+                        for (let i in res.data){
+                            arr = [];
+                            arr.push(Object.keys(res.data[i]).toString())
+                            arr.push(parseInt(Object.values(res.data[i])))
+                            this.list.push(arr)                            
+                        }
+
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(this.draw);
+                    });
+                },
+                methods:{
+                    draw: function() {
+                        let data = google.visualization.arrayToDataTable(this.list);
+                        let options = {height:300, title: "과일 판래량", is3D:true};
+                        let chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                        chart.draw(data, options)
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <div id="chart_div"></div>
+    </div>
+</body>
+</html>

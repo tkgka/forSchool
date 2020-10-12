@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        window.onload = function() {
+            let vm = new Vue({
+                el: '#app',
+                data: {
+                    list:[]
+                },
+                created: function() {
+                    axios.get('http://localhost:8080/list2').then((res)=>{
+                        this.list.push(Object.keys(res.data[0]));
+                        for(let i in res.data) {
+                            this.list.push(Object.values(res.data[i]));
+                        }
+
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(this.draw);
+                    });
+                },
+                methods: {
+                    draw: function() {
+                        let data = google.visualization.arrayToDataTable(this.list);
+                        let options = {
+                            height: 400, 
+                            vAxis: {title: 'Ranking'},
+                            hAxis: {title: 'Year'},
+                            title: '프로그래밍 언어 인기 순위',
+                            seriesType: 'bars',
+                            series: {3:{type: "line"}}
+                         };
+                        let chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+                        chart.draw(data, options);
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    
+    <div id="app">
+        <div id="chart_div"></div>
+        <!-- {{list}} -->
+    </div>
+</body>
+</html>
